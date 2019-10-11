@@ -46,7 +46,6 @@ def selenium_firefox(username,password,issues_id):
         driver.find_element_by_id("password").send_keys(password)
         driver.find_element_by_name("login").click()
         # driver.save_screenshot('static/img/issues_id.jpg')
-        # print("---------------------------open issues--------------------------------------")
         app.logger.info("open issues")
         driver.find_element_by_xpath('//*[@id="content"]/div[1]/a[1]').click()
         time.sleep(1)
@@ -58,10 +57,8 @@ def selenium_firefox(username,password,issues_id):
         for i in range(15):
             driver.find_element_by_xpath('//*[@id="issue_checklists_attributes_%s_is_done"]' % i).click()
         time.sleep(1)
-        # print("---------------------------submit--------------------------------------")
         app.logger.info("submit issues")
         driver.find_element_by_xpath('//*[@id="issue-form"]/input[6]').click()
-        # print("-------------------------close chrome------------------------------------")
         app.logger.info("close chrome")
         time.sleep(3)
         driver.close()
