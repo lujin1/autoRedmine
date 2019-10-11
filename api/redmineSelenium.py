@@ -21,7 +21,7 @@ def seleniumRedmine(username, password, name):
             app.logger.info("issues_id is %s" %issues_id)
             app.logger.info("issue is %s" %issue)
             selenium_firefox(username, password, issues_id)
-            result = "%s:%s 已完成" % (issue, issues_id)
+            result = "%s:%s is completed" % (issue, issues_id)
         else:
             app.logger.warn("no issue in %s" %name)
             # selenium_firefox(username, password, issues_id)
