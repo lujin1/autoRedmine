@@ -16,7 +16,6 @@ def seleniumRedmine(username, password, name):
     id = list(redmine.issue.all(limit=100).filter(project__id=36, assigned_to__name=name, status__name='New').values('id'))
     try:
         if id:
-            # print(id)
             issues_id = id[0]['id']
             issue = redmine.issue.get(issues_id)
             app.logger.info("issues_id is %s" %issues_id)
@@ -24,12 +23,10 @@ def seleniumRedmine(username, password, name):
             selenium_firefox(username, password, issues_id)
             result = "%s:%s 已完成" % (issue, issues_id)
         else:
-            # issues_id = 0
             app.logger.warn("no issue in %s" %name)
             # selenium_firefox(username, password, issues_id)
             result = "no issue in" + name
     except Exception as e:
-        # print(e.message)
         app.logger.warn(e)
         result = "error:" + e
     return result
@@ -63,5 +60,4 @@ def selenium_firefox(username,password,issues_id):
         time.sleep(3)
         driver.close()
     else:
-        # print("no issue")
         app.logger.warn("no issue")
