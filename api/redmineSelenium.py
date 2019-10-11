@@ -25,7 +25,7 @@ def seleniumRedmine(username, password, name):
         else:
             app.logger.warn("no issue in %s" %name)
             # selenium_firefox(username, password, issues_id)
-            result = "no issue in" + name
+            result = "no issue in " + name
     except Exception as e:
         app.logger.warn(e)
         result = "error:" + e
